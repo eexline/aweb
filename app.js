@@ -1,1 +1,685 @@
-const _0x1a16e1=_0x1b2a;(function(_0x5cac0b,_0x5a2ca7){const _0x1ac55a=_0x1b2a,_0x3c434f=_0x5cac0b();while(!![]){try{const _0x46e785=-parseInt(_0x1ac55a(0x15f))/0x1*(parseInt(_0x1ac55a(0x141))/0x2)+parseInt(_0x1ac55a(0x111))/0x3+-parseInt(_0x1ac55a(0x100))/0x4*(-parseInt(_0x1ac55a(0x149))/0x5)+parseInt(_0x1ac55a(0x14b))/0x6*(-parseInt(_0x1ac55a(0x199))/0x7)+parseInt(_0x1ac55a(0x157))/0x8+parseInt(_0x1ac55a(0x115))/0x9*(-parseInt(_0x1ac55a(0x15e))/0xa)+-parseInt(_0x1ac55a(0x1b0))/0xb*(-parseInt(_0x1ac55a(0x16b))/0xc);if(_0x46e785===_0x5a2ca7)break;else _0x3c434f['push'](_0x3c434f['shift']());}catch(_0x1f1395){_0x3c434f['push'](_0x3c434f['shift']());}}}(_0x27e2,0xef363));const tg=window[_0x1a16e1(0x151)]?.[_0x1a16e1(0x18a)];tg&&(tg[_0x1a16e1(0x172)](),tg[_0x1a16e1(0x1a5)]());const langBtn=document['getElementById'](_0x1a16e1(0x150)),modeButtons=document[_0x1a16e1(0x11a)](_0x1a16e1(0x102)),timeButtons=document[_0x1a16e1(0x11a)](_0x1a16e1(0x187)),pairButton=document['getElementById'](_0x1a16e1(0x161)),pairFlagsEl=document[_0x1a16e1(0x19f)](_0x1a16e1(0x133)),selectedPairEl=document['getElementById'](_0x1a16e1(0x186)),pairModal=document[_0x1a16e1(0x19f)](_0x1a16e1(0xfe)),pairSearch=document[_0x1a16e1(0x19f)]('pair-search'),pairList=document[_0x1a16e1(0x19f)](_0x1a16e1(0x153)),pairEmpty=document[_0x1a16e1(0x19f)](_0x1a16e1(0x164)),signalBtn=document[_0x1a16e1(0x19f)](_0x1a16e1(0x16d)),signalModal=document[_0x1a16e1(0x19f)](_0x1a16e1(0x126)),modalPair=document[_0x1a16e1(0x19f)](_0x1a16e1(0x10d)),modalFlagsEl=document[_0x1a16e1(0x19f)]('modal-flags'),modalDirection=document[_0x1a16e1(0x19f)]('modal-direction'),modalDirectionText=document[_0x1a16e1(0x19f)]('modal-direction-text'),modalDirectionIcon=document[_0x1a16e1(0x19f)](_0x1a16e1(0x168)),modalSuccess=document[_0x1a16e1(0x19f)]('modal-success'),modalBar=document[_0x1a16e1(0x19f)](_0x1a16e1(0x145)),modalExpiration=document['getElementById'](_0x1a16e1(0x13f)),modalExpSub=document[_0x1a16e1(0x19f)](_0x1a16e1(0x155)),modalMarket=document[_0x1a16e1(0x19f)](_0x1a16e1(0x103)),modalTime=document[_0x1a16e1(0x19f)](_0x1a16e1(0x131)),modalGenerate=document['getElementById'](_0x1a16e1(0x1ad)),modalClose=document[_0x1a16e1(0x19f)](_0x1a16e1(0x13c)),signalGenModal=document[_0x1a16e1(0x19f)](_0x1a16e1(0xf2)),genIcon=document[_0x1a16e1(0x19f)](_0x1a16e1(0x191)),genStepLabel=document[_0x1a16e1(0x19f)](_0x1a16e1(0xfa)),genProgressBar=document['getElementById'](_0x1a16e1(0x110)),genProgressPct=document[_0x1a16e1(0x19f)](_0x1a16e1(0x182)),genStepsEl=document[_0x1a16e1(0x19f)](_0x1a16e1(0x193)),marketStatusEl=document[_0x1a16e1(0x19f)](_0x1a16e1(0x14c)),pairMarketLabel=document[_0x1a16e1(0x19f)](_0x1a16e1(0x18b)),i18nEls=document['querySelectorAll'](_0x1a16e1(0xf1)),PAIR_SYMBOLS=[_0x1a16e1(0xe7),_0x1a16e1(0x1af),_0x1a16e1(0xe2),'USD/CAD',_0x1a16e1(0x18f),_0x1a16e1(0x177),_0x1a16e1(0x10e),'NZD/USD',_0x1a16e1(0x10a),_0x1a16e1(0x138),_0x1a16e1(0x19e),_0x1a16e1(0x13d)],CURRENCY_FLAG={'AUD':'au','CHF':'ch','EUR':'eu','USD':'us','GBP':'gb','JPY':'jp','CAD':'ca','NZD':'nz'},LANG_FLAG={'ru':'ru','en':'gb'},LANG_STORAGE_KEY='wander-trade-lang';function loadSavedLang(){const _0x369088=_0x1a16e1;try{const _0x5d2236=localStorage[_0x369088(0x158)](LANG_STORAGE_KEY);if(_0x5d2236==='ru'||_0x5d2236==='en')return _0x5d2236;}catch(_0x705cc5){}return'en';}function saveLang(_0x427263){const _0xfd19e5=_0x1a16e1;try{localStorage[_0xfd19e5(0x119)](LANG_STORAGE_KEY,_0x427263);}catch(_0x198077){}}let state={'mode':_0x1a16e1(0x15a),'pair':_0x1a16e1(0x17d),'expiration':'S3','lang':loadSavedLang()};const I18N={'ru':{'brandSub':_0x1a16e1(0xee),'marketStatus':'Статус\x20рынка','successRate':_0x1a16e1(0x173),'selectExpiration':_0x1a16e1(0x194),'selectPair':_0x1a16e1(0x142),'searchPair':_0x1a16e1(0x188),'noPairsFound':_0x1a16e1(0x167),'getSignal':_0x1a16e1(0xea),'directionBuy':_0x1a16e1(0x192),'directionSell':'ПРОДАТЬ','signalGenerated':'Сигнал\x20получен','expiration':_0x1a16e1(0x1ae),'market':'Рынок:','time':'Время:','generateNew':_0x1a16e1(0xe0),'close':'Закрыть','expSeconds':'Секунды','expMinutes':_0x1a16e1(0x12b),'expHours':_0x1a16e1(0x17c),'marketOpenReal':_0x1a16e1(0x144),'marketClosedReal':'Regular\x20·\x20закрыт','marketOpenOtc':'OTC\x20·\x20открыт','pairMarketReal':'Рынок\x20Regular','pairMarketOtc':_0x1a16e1(0x175),'genConnect':_0x1a16e1(0x178),'genScan':_0x1a16e1(0x17b),'genAi':'Запрос\x20сигнала\x20у\x20нейросети','genIndicators':'Расчёт\x20индикаторов','genOptimize':'Оптимизация'},'en':{'brandSub':'Trading\x20Signals','marketStatus':_0x1a16e1(0xf6),'successRate':_0x1a16e1(0x184),'selectExpiration':_0x1a16e1(0xe5),'selectPair':_0x1a16e1(0x165),'searchPair':'Search\x20pair...','noPairsFound':_0x1a16e1(0x18c),'getSignal':'Get\x20Signal','directionBuy':'BUY','directionSell':'SELL','signalGenerated':_0x1a16e1(0x189),'expiration':_0x1a16e1(0x1aa),'market':_0x1a16e1(0x16e),'time':_0x1a16e1(0x170),'generateNew':_0x1a16e1(0x16f),'close':_0x1a16e1(0x13a),'expSeconds':_0x1a16e1(0x185),'expMinutes':'Minutes','expHours':'Hours','marketOpenReal':'Regular\x20·\x20open','marketClosedReal':_0x1a16e1(0x1a8),'marketOpenOtc':'OTC\x20·\x20open','pairMarketReal':_0x1a16e1(0x12f),'pairMarketOtc':_0x1a16e1(0x10b),'genConnect':_0x1a16e1(0x139),'genScan':_0x1a16e1(0x136),'genAi':_0x1a16e1(0x1ab),'genIndicators':'Calculating\x20indicators','genOptimize':'Optimizing\x20parameters'}};function lucideGenIcon(_0x4cbf46){const _0x26fe2b=_0x1a16e1;return _0x26fe2b(0x147)+_0x4cbf46+'</svg>';}const GEN_ICONS={'connect':lucideGenIcon(_0x1a16e1(0x148)),'scan':lucideGenIcon('<path\x20d=\x22M3\x207V5a2\x202\x200\x200\x201\x202-2h2\x22/><path\x20d=\x22M17\x203h2a2\x202\x200\x200\x201\x202\x202v2\x22/><path\x20d=\x22M21\x2017v2a2\x202\x200\x200\x201-2\x202h-2\x22/><path\x20d=\x22M7\x2021H5a2\x202\x200\x200\x201-2-2v-2\x22/><circle\x20cx=\x2212\x22\x20cy=\x2212\x22\x20r=\x223\x22/><path\x20d=\x22m16\x2016-1.9-1.9\x22/>'),'ai':lucideGenIcon(_0x1a16e1(0x18e)),'indicators':lucideGenIcon('<path\x20d=\x22M3\x203v16a2\x202\x200\x200\x200\x202\x202h16\x22/><path\x20d=\x22M18\x2017V9\x22/><path\x20d=\x22M13\x2017V5\x22/><path\x20d=\x22M8\x2017v-3\x22/>'),'optimize':lucideGenIcon('<path\x20d=\x22M10\x205H3\x22/><path\x20d=\x22M12\x2019H3\x22/><path\x20d=\x22M14\x203v4\x22/><path\x20d=\x22M16\x2017v4\x22/><path\x20d=\x22M21\x2012h-9\x22/><path\x20d=\x22M21\x2019h-5\x22/><path\x20d=\x22M21\x205h-7\x22/><path\x20d=\x22M8\x2010v4\x22/><path\x20d=\x22M8\x2012H3\x22/>')},GEN_STEPS=[{'i18n':_0x1a16e1(0x143),'icon':_0x1a16e1(0x14d),'duration':0x384,'progressEnd':0x14},{'i18n':_0x1a16e1(0x12c),'icon':_0x1a16e1(0xf7),'duration':0x3b6,'progressEnd':0x28},{'i18n':'genAi','icon':'ai','duration':0x44c,'progressEnd':0x3c},{'i18n':_0x1a16e1(0x190),'icon':'indicators','duration':0x3b6,'progressEnd':0x50},{'i18n':'genOptimize','icon':_0x1a16e1(0x14f),'duration':0x3e8,'progressEnd':0x64}];let signalGenerationRunning=![],lastSignalDirection='SHORT';const DIRECTION_ICON={'SHORT':_0x1a16e1(0x104),'LONG':_0x1a16e1(0x122)};applyLanguage(),updateMarketUI(),updatePairDisplay(),modeButtons[_0x1a16e1(0x129)](_0x25030d=>{const _0x167d9b=_0x1a16e1;_0x25030d['addEventListener'](_0x167d9b(0x14a),()=>{const _0x5c9c20=_0x167d9b;modeButtons[_0x5c9c20(0x129)](_0x2c60be=>_0x2c60be[_0x5c9c20(0x134)]['remove'](_0x5c9c20(0x183))),_0x25030d[_0x5c9c20(0x134)][_0x5c9c20(0x15c)](_0x5c9c20(0x183)),state[_0x5c9c20(0x197)]=_0x25030d[_0x5c9c20(0x112)][_0x5c9c20(0x197)],syncPairToMode(),updateMarketUI(),renderPairList(pairSearch?.[_0x5c9c20(0x11f)]||''),sendToTelegram(_0x5c9c20(0x15b));});}),timeButtons['forEach'](_0x24b941=>{const _0x54cfc4=_0x1a16e1;_0x24b941[_0x54cfc4(0x176)]('click',()=>{const _0x812d6=_0x54cfc4;timeButtons[_0x812d6(0x129)](_0x459732=>_0x459732[_0x812d6(0x134)][_0x812d6(0x1a6)]('active')),_0x24b941[_0x812d6(0x134)]['add']('active'),state['expiration']=_0x24b941[_0x812d6(0x112)]['time'],sendToTelegram('expiration_changed');});}),pairButton[_0x1a16e1(0x176)](_0x1a16e1(0x14a),openPairModal),pairSearch?.['addEventListener']('input',()=>{renderPairList(pairSearch['value']);}),document[_0x1a16e1(0x11a)](_0x1a16e1(0x1a0))[_0x1a16e1(0x129)](_0x17e41a=>{const _0x6d94aa=_0x1a16e1;_0x17e41a[_0x6d94aa(0x176)](_0x6d94aa(0x14a),()=>{const _0x10c2eb=_0x6d94aa,_0x36926d=_0x17e41a[_0x10c2eb(0x112)][_0x10c2eb(0x11b)];if(_0x36926d)closeModalById(_0x36926d);});}),signalBtn[_0x1a16e1(0x176)](_0x1a16e1(0x14a),async()=>{const _0x5a6908=_0x1a16e1;if(signalGenerationRunning||isRealMarketClosed())return;pulse(signalBtn),sendToTelegram(_0x5a6908(0x109)),await openSignalModal();}),modalGenerate[_0x1a16e1(0x176)](_0x1a16e1(0x14a),async()=>{const _0x5560be=_0x1a16e1;if(signalGenerationRunning)return;closeModalById(_0x5560be(0x126)),await openSignalModal(),sendToTelegram(_0x5560be(0x17e));}),modalClose[_0x1a16e1(0x176)](_0x1a16e1(0x14a),()=>closeModalById(_0x1a16e1(0x126))),document[_0x1a16e1(0x176)](_0x1a16e1(0xef),_0x208b4d=>{const _0x10a200=_0x1a16e1;if(_0x208b4d[_0x10a200(0x19d)]!=='Escape')return;if(!pairModal['classList'][_0x10a200(0x113)](_0x10a200(0x180)))closeModalById(_0x10a200(0xfe));else{if(!signalModal['classList'][_0x10a200(0x113)](_0x10a200(0x180)))closeModalById('signal-modal');}}),langBtn[_0x1a16e1(0x176)](_0x1a16e1(0x14a),()=>{const _0x27ac36=_0x1a16e1;state[_0x27ac36(0x169)]=state[_0x27ac36(0x169)]==='ru'?'en':'ru',saveLang(state['lang']),applyLanguage(),renderPairList(pairSearch?.['value']||''),!signalModal[_0x27ac36(0x134)][_0x27ac36(0x113)](_0x27ac36(0x180))&&modalDirectionText&&(modalDirectionText[_0x27ac36(0xe6)]=directionLabel(lastSignalDirection)),sendToTelegram(_0x27ac36(0x101));});function formatPair(_0x1cbcd5){const _0x373544=_0x1a16e1;return state[_0x373544(0x197)]===_0x373544(0x15a)?_0x1cbcd5+'\x20OTC':_0x1cbcd5;}function parseSymbol(_0x166716){const _0x49e58f=_0x1a16e1;return _0x166716['replace'](/\s+OTC$/i,'')[_0x49e58f(0x127)]();}function pairLetter(_0x2a6739){const _0x568ccb=_0x1a16e1;return _0x2a6739[_0x568ccb(0x162)](0x0)[_0x568ccb(0x11d)]();}function parseCurrencies(_0x400218){const _0x2d941d=_0x1a16e1,[_0x442e3d,_0x45c8d3]=parseSymbol(_0x400218)[_0x2d941d(0x1a2)]('/');return{'base':_0x442e3d?.[_0x2d941d(0x127)](),'quote':_0x45c8d3?.['trim']()};}function flagSrc(_0x827658){const _0x425242=_0x1a16e1;return'./flags/'+_0x827658+_0x425242(0xf8);}function pairFlagsHtml(_0x1b4c8c,_0x3fd210='md'){const _0x5d7a73=_0x1a16e1,{base:_0x279b53,quote:_0x2f19dd}=parseCurrencies(_0x1b4c8c),_0x2ef6b0=CURRENCY_FLAG[_0x279b53],_0x1db358=CURRENCY_FLAG[_0x2f19dd];if(!_0x2ef6b0||!_0x1db358)return'<span\x20class=\x22pair-flags\x20pair-flags--'+_0x3fd210+_0x5d7a73(0x16a)+pairLetter(_0x1b4c8c)+_0x5d7a73(0x166);return _0x5d7a73(0x19a)+_0x3fd210+'\x22>\x0a\x20\x20\x20\x20\x20\x20<img\x20class=\x22pair-flag\x20pair-flag--base\x22\x20src=\x22'+flagSrc(_0x2ef6b0)+'\x22\x20alt=\x22\x22\x20width=\x2224\x22\x20height=\x2224\x22\x20loading=\x22lazy\x22\x20decoding=\x22async\x22\x20/>\x0a\x20\x20\x20\x20\x20\x20<img\x20class=\x22pair-flag\x20pair-flag--quote\x22\x20src=\x22'+flagSrc(_0x1db358)+'\x22\x20alt=\x22\x22\x20width=\x2224\x22\x20height=\x2224\x22\x20loading=\x22lazy\x22\x20decoding=\x22async\x22\x20/>\x0a\x20\x20\x20\x20</span>';}function getPairsForMode(){const _0x23a08a=_0x1a16e1;return PAIR_SYMBOLS[_0x23a08a(0xf5)](_0x3980e9=>formatPair(_0x3980e9));}function _0x27e2(){const _0x52d567=['true','Рынок\x20OTC','addEventListener','USD/JPY','Подключение\x20к\x20серверам','SHORT','scale(0.98)','Сканирование\x20данных','Часы','AUD/CHF\x20OTC','generate_new_signal','className','hidden','filter','gen-progress-pct','active','Success\x20Rate','Seconds','selected-pair','.time-btn','Поиск\x20пары...','Signal\x20Generated','WebApp','pair-market-label','No\x20pairs\x20found','progressEnd','<path\x20d=\x22M12\x2018V5\x22/><path\x20d=\x22M15\x2013a4.17\x204.17\x200\x200\x201-3-4\x204.17\x204.17\x200\x200\x201-3\x204\x22/><path\x20d=\x22M17.598\x206.5A3\x203\x200\x201\x200\x2012\x205a3\x203\x200\x201\x200-5.598\x201.5\x22/><path\x20d=\x22M17.997\x205.125a4\x204\x200\x200\x201\x202.526\x205.77\x22/><path\x20d=\x22M18\x2018a4\x204\x200\x200\x200\x202-7.464\x22/><path\x20d=\x22M19.967\x2017.483A4\x204\x200\x201\x201\x2012\x2018a4\x204\x200\x201\x201-7.967-.517\x22/><path\x20d=\x22M6\x2018a4\x204\x200\x200\x201-2-7.464\x22/><path\x20d=\x22M6.003\x205.125a4\x204\x200\x200\x200-2.526\x205.77\x22/>','EUR/GBP','genIndicators','gen-icon','КУПИТЬ','gen-steps','Выберите\x20время\x20экспирации','pair_changed','includes','mode','transform','7OFkGBc','<span\x20class=\x22pair-flags\x20pair-flags--','expiration','LONG','key','USD/CHF','getElementById','[data-close-target]','Переключить\x20на\x20английский','split','toggle','random','expand','remove','button','Regular\x20·\x20closed','is-swapping','Expiration','Requesting\x20signal\x20from\x20AI','src','modal-generate','Экспирация','EUR/USD','18032993DizTgB','aria-hidden','directionSell','Получить\x20новый\x20сигнал','is-closed','GBP/JPY','toLocaleTimeString','marketClosedReal','Select\x20Expiration\x20Time','textContent','AUD/CHF','documentElement','scale(1)','Получить\x20сигнал','setAttribute','is-market-closed','disabled','Торговые\x20сигналы','keydown','false','[data-i18n]','signal-gen-modal','directionBuy','is-active','map','Market\x20Status','scan','.svg','searchPair','gen-step-label','aria-label','expHours','startsWith','pair-modal','pair','41432WfgqBn','language_changed','.mode-btn','modal-market','<svg\x20width=\x2216\x22\x20height=\x2216\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222.5\x22\x20stroke-linecap=\x22round\x22\x20stroke-linejoin=\x22round\x22><path\x20d=\x22m22\x2017-8.5-8.5-5\x205L2\x207\x22/><path\x20d=\x22M16\x2017h6v-6\x22/></svg>','signal_generated','pow','pairMarketReal','max','get_signal_clicked','EUR/JPY','OTC\x20Market','getDay','modal-pair','AUD/USD','innerHTML','gen-progress-bar','3328527NlFsRf','dataset','contains','width','14004ZStENu','stringify','expMinutes','is-done','setItem','querySelectorAll','closeTarget','.stats-icon--market','toUpperCase','</p>\x0a\x20\x20\x20\x20\x20\x20</span>\x0a\x20\x20\x20\x20\x20\x20<span\x20class=\x22pair-option-check\x22\x20aria-hidden=\x22true\x22>✓</span>\x0a\x20\x20\x20\x20','value','sendData','length','<svg\x20width=\x2216\x22\x20height=\x2216\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222.5\x22\x20stroke-linecap=\x22round\x22\x20stroke-linejoin=\x22round\x22><path\x20d=\x22M16\x207h6v6\x22/><path\x20d=\x22m22\x207-8.5\x208.5-5-5L2\x2017\x22/></svg>','appendChild','focus','role','signal-modal','trim','marketOpenOtc','forEach','min','Минуты','genScan','querySelector','now','Regular\x20Market','buy','modal-time','./flags/','pair-flags','classList','pairMarketOtc','Scanning\x20market\x20data','icon','GBP/USD','Connecting\x20to\x20servers','Close','log','modal-close','CAD/JPY','toLowerCase','modal-expiration','createElement','146618FtThey','Выберите\x20пару','genConnect','Regular\x20·\x20открыт','modal-bar','\x0a\x20\x20\x20\x20\x20\x20<span\x20class=\x22pair-option-body\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22pair-option-name\x22>','<svg\x20class=\x22gen-icon-svg\x22\x20width=\x2224\x22\x20height=\x2224\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222\x22\x20stroke-linecap=\x22round\x22\x20stroke-linejoin=\x22round\x22\x20aria-hidden=\x22true\x22>','<rect\x20width=\x2220\x22\x20height=\x228\x22\x20x=\x222\x22\x20y=\x222\x22\x20rx=\x222\x22\x20ry=\x222\x22/><rect\x20width=\x2220\x22\x20height=\x228\x22\x20x=\x222\x22\x20y=\x2214\x22\x20rx=\x222\x22\x20ry=\x222\x22/><line\x20x1=\x226\x22\x20x2=\x226.01\x22\x20y1=\x226\x22\x20y2=\x226\x22/><line\x20x1=\x226\x22\x20x2=\x226.01\x22\x20y1=\x2218\x22\x20y2=\x2218\x22/>','215XtvsqE','click','5488806UFuPne','market-status','connect','placeholder','optimize','lang-btn','Telegram','body','pair-list','i18n','modal-exp-sub','round','1092784QJXovW','getItem','WebApp\x20payload:','otc','mode_changed','add','REGULAR','8930XdRQne','23uLeGLr','style','pair-button','charAt','Switch\x20to\x20Russian','pair-empty','Select\x20pair','</span></span>','Пары\x20не\x20найдены','modal-direction-icon','lang','\x22><span\x20class=\x22pair-flag-fallback\x22>','24GOEDol','pair-option','signal-btn','Market:','Generate\x20New\x20Signal','Time:','aria-selected','ready','Успешность'];_0x27e2=function(){return _0x52d567;};return _0x27e2();}function syncPairToMode(){const _0x2f6f53=_0x1a16e1,_0x5be7c9=parseSymbol(state[_0x2f6f53(0xff)]),_0x47ae85=formatPair(_0x5be7c9);state[_0x2f6f53(0xff)]!==_0x47ae85&&(state[_0x2f6f53(0xff)]=_0x47ae85,updatePairDisplay());}function updatePairDisplay(){const _0x1519e8=_0x1a16e1;selectedPairEl[_0x1519e8(0xe6)]=state[_0x1519e8(0xff)];if(pairFlagsEl)pairFlagsEl['innerHTML']=pairFlagsHtml(parseSymbol(state['pair']),'md');}function selectPair(_0x3bfeff){const _0x5d0646=_0x1a16e1;state['pair']=_0x3bfeff,updatePairDisplay(),closeModalById(_0x5d0646(0xfe)),sendToTelegram(_0x5d0646(0x195));}function openPairModal(){const _0x1e3354=_0x1a16e1;pairSearch&&(pairSearch[_0x1e3354(0x11f)]='',pairSearch[_0x1e3354(0x14e)]=(I18N[state[_0x1e3354(0x169)]]||I18N['en'])[_0x1e3354(0xf9)]),renderPairList(''),openModalById('pair-modal'),setTimeout(()=>pairSearch?.[_0x1e3354(0x124)](),0x78);}function renderPairList(_0x5d7ba2){const _0x71f22c=_0x1a16e1,_0x1fb11a=I18N[state[_0x71f22c(0x169)]]||I18N['en'],_0x512e77=_0x5d7ba2[_0x71f22c(0x127)]()[_0x71f22c(0x13e)](),_0xf81201=getPairsForMode()[_0x71f22c(0x181)](_0x1ff994=>_0x1ff994[_0x71f22c(0x13e)]()[_0x71f22c(0x196)](_0x512e77)),_0x3d8ede=state[_0x71f22c(0x197)]===_0x71f22c(0x15a)?_0x1fb11a[_0x71f22c(0x135)]:_0x1fb11a[_0x71f22c(0x107)];pairList[_0x71f22c(0x10f)]='',_0xf81201[_0x71f22c(0x129)](_0x1f8f99=>{const _0x4a3f84=_0x71f22c,_0x320c5c=parseSymbol(_0x1f8f99),_0x24286c=document[_0x4a3f84(0x140)]('li'),_0x6a1059=document[_0x4a3f84(0x140)](_0x4a3f84(0x1a7));_0x6a1059['type']=_0x4a3f84(0x1a7),_0x6a1059[_0x4a3f84(0x17f)]=_0x4a3f84(0x16c)+(_0x1f8f99===state[_0x4a3f84(0xff)]?'\x20active':''),_0x6a1059[_0x4a3f84(0xeb)](_0x4a3f84(0x125),'option'),_0x6a1059[_0x4a3f84(0xeb)](_0x4a3f84(0x171),_0x1f8f99===state['pair']?_0x4a3f84(0x174):_0x4a3f84(0xf0)),_0x6a1059[_0x4a3f84(0x10f)]='\x0a\x20\x20\x20\x20\x20\x20'+pairFlagsHtml(_0x320c5c,'sm')+_0x4a3f84(0x146)+_0x1f8f99+'</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22pair-option-tag\x22>'+_0x3d8ede+_0x4a3f84(0x11e),_0x6a1059['addEventListener'](_0x4a3f84(0x14a),()=>selectPair(_0x1f8f99)),_0x24286c[_0x4a3f84(0x123)](_0x6a1059),pairList[_0x4a3f84(0x123)](_0x24286c);});const _0x20a9b1=_0xf81201[_0x71f22c(0x121)]===0x0;pairEmpty[_0x71f22c(0x134)]['toggle'](_0x71f22c(0x180),!_0x20a9b1),pairList[_0x71f22c(0x134)][_0x71f22c(0x1a3)](_0x71f22c(0x180),_0x20a9b1);}function openModalById(_0x3a9e95){const _0x5df452=_0x1a16e1,_0x4a1c05=document[_0x5df452(0x19f)](_0x3a9e95);if(!_0x4a1c05)return;_0x4a1c05['classList'][_0x5df452(0x1a6)](_0x5df452(0x180)),_0x4a1c05[_0x5df452(0xeb)]('aria-hidden',_0x5df452(0xf0));}function _0x1b2a(_0x305303,_0x5038fe){_0x305303=_0x305303-0xde;const _0x27e238=_0x27e2();let _0x1b2a2b=_0x27e238[_0x305303];return _0x1b2a2b;}function closeModalById(_0x5467c5){const _0x20bb6a=_0x1a16e1,_0x276073=document['getElementById'](_0x5467c5);if(!_0x276073)return;_0x276073[_0x20bb6a(0x134)][_0x20bb6a(0x15c)](_0x20bb6a(0x180)),_0x276073[_0x20bb6a(0xeb)](_0x20bb6a(0xde),_0x20bb6a(0x174));}function setSignalGenBackdrop(_0x3b1599){const _0x460505=_0x1a16e1;document[_0x460505(0x152)][_0x460505(0x134)][_0x460505(0x1a3)]('signal-gen-active',_0x3b1599);}function pulse(_0x3fab9f){const _0x254a34=_0x1a16e1;_0x3fab9f['style'][_0x254a34(0x198)]=_0x254a34(0x17a),setTimeout(()=>{const _0x198c2b=_0x254a34;_0x3fab9f[_0x198c2b(0x160)][_0x198c2b(0x198)]=_0x198c2b(0xe9);},0x78);}function applyLanguage(){const _0x242253=_0x1a16e1,_0x2c5850=I18N[state[_0x242253(0x169)]]||I18N['en'];document[_0x242253(0xe8)][_0x242253(0x169)]=state[_0x242253(0x169)];if(langBtn){const _0xcd8ec2=langBtn[_0x242253(0x12d)]('.lang-flag'),_0x89b6b5=LANG_FLAG[state['lang']]||'gb';if(_0xcd8ec2)_0xcd8ec2[_0x242253(0x1ac)]=_0x242253(0x132)+_0x89b6b5+_0x242253(0xf8);langBtn[_0x242253(0xeb)](_0x242253(0xfb),state['lang']==='ru'?_0x242253(0x1a1):_0x242253(0x163));}i18nEls[_0x242253(0x129)](_0x101039=>{const _0x4b1cd9=_0x242253,_0x196522=_0x101039['dataset'][_0x4b1cd9(0x154)];if(_0x196522&&_0x2c5850[_0x196522])_0x101039[_0x4b1cd9(0xe6)]=_0x2c5850[_0x196522];});if(pairSearch)pairSearch[_0x242253(0x14e)]=_0x2c5850[_0x242253(0xf9)];updateMarketUI();}function isWeekend(_0x5edb9f=new Date()){const _0x3ce73f=_0x1a16e1,_0xcab54=_0x5edb9f[_0x3ce73f(0x10c)]();return _0xcab54===0x0||_0xcab54===0x6;}function isRealMarketClosed(){const _0x1ad54e=_0x1a16e1;return state[_0x1ad54e(0x197)]==='real'&&isWeekend();}function updateSignalAvailability(){const _0x15fa47=_0x1a16e1,_0x43b8e0=isRealMarketClosed(),_0x281895=_0x43b8e0||signalGenerationRunning;signalBtn&&(signalBtn[_0x15fa47(0xed)]=_0x281895,signalBtn[_0x15fa47(0x134)][_0x15fa47(0x1a3)](_0x15fa47(0xec),_0x43b8e0&&!signalGenerationRunning));}function updateMarketUI(){const _0x565a36=_0x1a16e1,_0x2361bb=I18N[state['lang']]||I18N['en'],_0xcd0fe1=state[_0x565a36(0x197)]===_0x565a36(0x15a),_0x2ee3ab=isRealMarketClosed();marketStatusEl&&(_0xcd0fe1?marketStatusEl[_0x565a36(0xe6)]=_0x2361bb[_0x565a36(0x128)]:marketStatusEl['textContent']=_0x2ee3ab?_0x2361bb[_0x565a36(0xe4)]:_0x2361bb['marketOpenReal'],marketStatusEl[_0x565a36(0x134)][_0x565a36(0x1a3)](_0x565a36(0xe1),!_0xcd0fe1&&_0x2ee3ab));const _0x171a46=document[_0x565a36(0x12d)](_0x565a36(0x11c));_0x171a46&&_0x171a46[_0x565a36(0x134)]['toggle']('is-closed',!_0xcd0fe1&&_0x2ee3ab),pairMarketLabel&&(pairMarketLabel[_0x565a36(0xe6)]=_0xcd0fe1?_0x2361bb['pairMarketOtc']:_0x2361bb['pairMarketReal']),updateSignalAvailability();}async function openSignalModal(){const _0x1804ec=_0x1a16e1;if(isRealMarketClosed())return;signalGenerationRunning=!![],updateSignalAvailability();if(modalGenerate)modalGenerate[_0x1804ec(0xed)]=!![];try{const _0x172050=await runSignalGeneration();fillSignalModal(_0x172050),openModalById(_0x1804ec(0x126)),sendToTelegram(_0x1804ec(0x105));}finally{signalGenerationRunning=![];if(modalGenerate)modalGenerate[_0x1804ec(0xed)]=![];updateSignalAvailability();}}function directionLabel(_0x381d74){const _0x53800a=_0x1a16e1,_0x2fe3b5=I18N[state['lang']]||I18N['en'];return _0x381d74===_0x53800a(0x19c)?_0x2fe3b5[_0x53800a(0xf3)]:_0x2fe3b5[_0x53800a(0xdf)];}function fillSignalModal({direction:_0x478c0f,success:_0x49de80}){const _0x4aa541=_0x1a16e1,_0x103f40=I18N[state['lang']]||I18N['en'],_0x5c8771=_0x478c0f===_0x4aa541(0x19c);lastSignalDirection=_0x478c0f,modalPair[_0x4aa541(0xe6)]=state[_0x4aa541(0xff)];if(modalFlagsEl)modalFlagsEl[_0x4aa541(0x10f)]=pairFlagsHtml(parseSymbol(state[_0x4aa541(0xff)]),'md');if(modalDirectionText)modalDirectionText[_0x4aa541(0xe6)]=directionLabel(_0x478c0f);if(modalDirectionIcon)modalDirectionIcon[_0x4aa541(0x10f)]=DIRECTION_ICON[_0x478c0f]||DIRECTION_ICON[_0x4aa541(0x179)];modalDirection&&(modalDirection[_0x4aa541(0x134)][_0x4aa541(0x1a3)](_0x4aa541(0x130),_0x5c8771),modalDirection[_0x4aa541(0x134)]['toggle']('sell',!_0x5c8771)),modalSuccess['textContent']=_0x49de80['toFixed'](0x1),modalBar['style'][_0x4aa541(0x114)]=Math[_0x4aa541(0x108)](0x5,Math['min'](0x64,_0x49de80))+'%',modalExpiration['textContent']=state[_0x4aa541(0x19b)],modalExpSub['textContent']=expirationSuffix(state['expiration'],_0x103f40),modalMarket['textContent']=state[_0x4aa541(0x197)]==='otc'?'OTC':_0x4aa541(0x15d),modalTime[_0x4aa541(0xe6)]=new Date()[_0x4aa541(0xe3)](undefined,{'hour12':![]});}function setGenProgress(_0x25d59b){const _0x259dc6=_0x1a16e1,_0x3b3810=Math[_0x259dc6(0x108)](0x0,Math[_0x259dc6(0x12a)](0x64,_0x25d59b));genProgressBar&&(genProgressBar[_0x259dc6(0x160)][_0x259dc6(0x114)]=_0x3b3810+'%',genProgressBar['classList']['toggle']('is-active',_0x3b3810>0x2));if(genProgressPct)genProgressPct[_0x259dc6(0xe6)]=String(Math[_0x259dc6(0x156)](_0x3b3810));}function updateGenStepDots(_0x28b7c4){const _0x108c29=_0x1a16e1;if(!genStepsEl)return;genStepsEl['querySelectorAll']('.gen-step-dot')[_0x108c29(0x129)]((_0x4b975f,_0x275d42)=>{const _0x48416d=_0x108c29;_0x4b975f['classList']['toggle'](_0x48416d(0xf4),_0x275d42===_0x28b7c4),_0x4b975f['classList'][_0x48416d(0x1a3)](_0x48416d(0x118),_0x275d42<_0x28b7c4);});}function setGenStep(_0x538e42,_0x3b6694){const _0x36318e=_0x1a16e1,_0x3dd7ca=I18N[state['lang']]||I18N['en'];updateGenStepDots(_0x3b6694),genStepLabel&&(genStepLabel[_0x36318e(0x134)][_0x36318e(0x15c)](_0x36318e(0x1a9)),setTimeout(()=>{const _0x45e04b=_0x36318e;genStepLabel['textContent']=_0x3dd7ca[_0x538e42[_0x45e04b(0x154)]]||I18N['en'][_0x538e42['i18n']],genStepLabel[_0x45e04b(0x134)]['remove'](_0x45e04b(0x1a9));},0x8c)),genIcon&&(genIcon[_0x36318e(0x134)][_0x36318e(0x15c)](_0x36318e(0x1a9)),setTimeout(()=>{const _0x3c02c4=_0x36318e;genIcon['innerHTML']=GEN_ICONS[_0x538e42['icon']]||'',genIcon[_0x3c02c4(0x134)][_0x3c02c4(0x1a6)](_0x3c02c4(0x1a9));},0x8c));}function animateGenProgress(_0x37610f,_0x10ba66,_0xb981b6){return new Promise(_0x2a274c=>{const _0x4dbe59=_0x1b2a,_0x37b37a=performance[_0x4dbe59(0x12e)](),_0x492b56=_0x150003=>{const _0x2063bd=_0x4dbe59,_0x1265aa=Math[_0x2063bd(0x12a)](0x1,(_0x150003-_0x37b37a)/_0xb981b6),_0x4fbf4a=_0x1265aa<0.5?0x2*_0x1265aa*_0x1265aa:0x1-Math[_0x2063bd(0x106)](-0x2*_0x1265aa+0x2,0x2)/0x2;setGenProgress(_0x37610f+(_0x10ba66-_0x37610f)*_0x4fbf4a);if(_0x1265aa<0x1)requestAnimationFrame(_0x492b56);else setGenProgress(_0x10ba66),_0x2a274c();};requestAnimationFrame(_0x492b56);});}async function runSignalGeneration(){const _0x24981b=_0x1a16e1;setSignalGenBackdrop(!![]),openModalById('signal-gen-modal'),setGenProgress(0x0);try{const _0x2d4218=I18N[state[_0x24981b(0x169)]]||I18N['en'];if(genStepLabel)genStepLabel[_0x24981b(0xe6)]=_0x2d4218[GEN_STEPS[0x0][_0x24981b(0x154)]]||I18N['en'][GEN_STEPS[0x0][_0x24981b(0x154)]];if(genIcon)genIcon['innerHTML']=GEN_ICONS[GEN_STEPS[0x0][_0x24981b(0x137)]]||'';updateGenStepDots(0x0);if(genProgressBar)genProgressBar[_0x24981b(0x134)][_0x24981b(0x1a6)](_0x24981b(0xf4));let _0xc304b4=0x0;for(let _0x2b31ad=0x0;_0x2b31ad<GEN_STEPS['length'];_0x2b31ad++){const _0x374d82=GEN_STEPS[_0x2b31ad];setGenStep(_0x374d82,_0x2b31ad),await animateGenProgress(_0xc304b4,_0x374d82[_0x24981b(0x18d)],_0x374d82['duration']),_0xc304b4=_0x374d82[_0x24981b(0x18d)];}return updateGenStepDots(GEN_STEPS[_0x24981b(0x121)]),await new Promise(_0xbf1b14=>setTimeout(_0xbf1b14,0xb4)),generateSignal();}finally{closeModalById(_0x24981b(0xf2)),setSignalGenBackdrop(![]);}}function generateSignal(){const _0x401d91=_0x1a16e1,_0x5c4efc=Math[_0x401d91(0x1a4)]()<0.5?_0x401d91(0x179):'LONG',_0x8c92c6=0x4a+Math['random']()*0x15;return{'direction':_0x5c4efc,'success':_0x8c92c6};}function expirationSuffix(_0x1e872f,_0x332620){const _0x228343=_0x1a16e1;if(_0x1e872f['startsWith']('S'))return _0x332620['expSeconds'];if(_0x1e872f['startsWith']('M'))return _0x332620[_0x228343(0x117)];if(_0x1e872f[_0x228343(0xfd)]('H'))return _0x332620[_0x228343(0xfc)];return'';}function sendToTelegram(_0x2ea8a1){const _0x4f63ae=_0x1a16e1,_0x47bada={'action':_0x2ea8a1,...state};if(tg){tg[_0x4f63ae(0x120)](JSON[_0x4f63ae(0x116)](_0x47bada));return;}console[_0x4f63ae(0x13b)](_0x4f63ae(0x159),_0x47bada);}
+const tg = window.Telegram?.WebApp;
+
+function readInset(value) {
+  const n = Number(value);
+  return Number.isFinite(n) && n > 0 ? n : 0;
+}
+
+function applyTelegramSafeArea() {
+  if (!tg) return;
+
+  const safe = tg.safeAreaInset || {};
+  const content = tg.contentSafeAreaInset || {};
+  const root = document.documentElement;
+
+  const top = readInset(safe.top) + readInset(content.top);
+  const bottom = readInset(safe.bottom) + readInset(content.bottom);
+  const left = readInset(safe.left) + readInset(content.left);
+  const right = readInset(safe.right) + readInset(content.right);
+
+  root.style.setProperty("--tg-safe-top", `${top}px`);
+  root.style.setProperty("--tg-safe-bottom", `${bottom}px`);
+  root.style.setProperty("--tg-safe-left", `${left}px`);
+  root.style.setProperty("--tg-safe-right", `${right}px`);
+}
+
+function initTelegramApp() {
+  if (!tg) return;
+
+  const bg = "#060e1a";
+
+  tg.ready();
+  tg.expand();
+
+  if (typeof tg.requestFullscreen === "function") {
+    try {
+      tg.requestFullscreen();
+    } catch (_) {
+      /* older clients */
+    }
+  }
+
+  if (typeof tg.disableVerticalSwipes === "function") {
+    tg.disableVerticalSwipes();
+  }
+
+  if (typeof tg.setBackgroundColor === "function") {
+    tg.setBackgroundColor(bg);
+  }
+  if (typeof tg.setHeaderColor === "function") {
+    tg.setHeaderColor(bg);
+  }
+  if (typeof tg.setBottomBarColor === "function") {
+    tg.setBottomBarColor(bg);
+  }
+
+  applyTelegramSafeArea();
+
+  tg.onEvent("contentSafeAreaChanged", applyTelegramSafeArea);
+  tg.onEvent("safeAreaChanged", applyTelegramSafeArea);
+  tg.onEvent("fullscreenChanged", applyTelegramSafeArea);
+  tg.onEvent("viewportChanged", applyTelegramSafeArea);
+}
+
+initTelegramApp();
+
+const langBtn = document.getElementById("lang-btn");
+const modeButtons = document.querySelectorAll(".mode-btn");
+const timeButtons = document.querySelectorAll(".time-btn");
+const pairButton = document.getElementById("pair-button");
+const pairFlagsEl = document.getElementById("pair-flags");
+const selectedPairEl = document.getElementById("selected-pair");
+const pairModal = document.getElementById("pair-modal");
+const pairSearch = document.getElementById("pair-search");
+const pairList = document.getElementById("pair-list");
+const pairEmpty = document.getElementById("pair-empty");
+const signalBtn = document.getElementById("signal-btn");
+const signalModal = document.getElementById("signal-modal");
+const modalPair = document.getElementById("modal-pair");
+const modalFlagsEl = document.getElementById("modal-flags");
+const modalDirection = document.getElementById("modal-direction");
+const modalDirectionText = document.getElementById("modal-direction-text");
+const modalDirectionIcon = document.getElementById("modal-direction-icon");
+const modalSuccess = document.getElementById("modal-success");
+const modalBar = document.getElementById("modal-bar");
+const modalExpiration = document.getElementById("modal-expiration");
+const modalExpSub = document.getElementById("modal-exp-sub");
+const modalMarket = document.getElementById("modal-market");
+const modalTime = document.getElementById("modal-time");
+const modalGenerate = document.getElementById("modal-generate");
+const modalClose = document.getElementById("modal-close");
+const signalGenModal = document.getElementById("signal-gen-modal");
+const genIcon = document.getElementById("gen-icon");
+const genStepLabel = document.getElementById("gen-step-label");
+const genProgressBar = document.getElementById("gen-progress-bar");
+const genProgressPct = document.getElementById("gen-progress-pct");
+const genStepsEl = document.getElementById("gen-steps");
+const marketStatusEl = document.getElementById("market-status");
+const pairMarketLabel = document.getElementById("pair-market-label");
+const i18nEls = document.querySelectorAll("[data-i18n]");
+
+const PAIR_SYMBOLS = [
+  "AUD/CHF",
+  "EUR/USD",
+  "GBP/JPY",
+  "USD/CAD",
+  "EUR/GBP",
+  "USD/JPY",
+  "AUD/USD",
+  "NZD/USD",
+  "EUR/JPY",
+  "GBP/USD",
+  "USD/CHF",
+  "CAD/JPY",
+];
+
+/** ISO country codes for circle-flags (./flags/{code}.svg) */
+const CURRENCY_FLAG = {
+  AUD: "au",
+  CHF: "ch",
+  EUR: "eu",
+  USD: "us",
+  GBP: "gb",
+  JPY: "jp",
+  CAD: "ca",
+  NZD: "nz",
+};
+
+const LANG_FLAG = {
+  ru: "ru",
+  en: "gb",
+};
+
+const LANG_STORAGE_KEY = "wander-trade-lang";
+
+function loadSavedLang() {
+  try {
+    const saved = localStorage.getItem(LANG_STORAGE_KEY);
+    if (saved === "ru" || saved === "en") return saved;
+  } catch (_) {
+    /* private mode / blocked storage */
+  }
+  return "en";
+}
+
+function saveLang(lang) {
+  try {
+    localStorage.setItem(LANG_STORAGE_KEY, lang);
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+let state = {
+  mode: "otc",
+  pair: "AUD/CHF OTC",
+  expiration: "S3",
+  lang: loadSavedLang(),
+};
+
+const I18N = {
+  ru: {
+    brandSub: "Торговые сигналы",
+    marketStatus: "Статус рынка",
+    successRate: "Успешность",
+    selectExpiration: "Выберите время экспирации",
+    selectPair: "Выберите пару",
+    searchPair: "Поиск пары...",
+    noPairsFound: "Пары не найдены",
+    getSignal: "Получить сигнал",
+    directionBuy: "КУПИТЬ",
+    directionSell: "ПРОДАТЬ",
+    signalGenerated: "Сигнал получен",
+    expiration: "Экспирация",
+    market: "Рынок:",
+    time: "Время:",
+    generateNew: "Получить новый сигнал",
+    close: "Закрыть",
+    expSeconds: "Секунды",
+    expMinutes: "Минуты",
+    expHours: "Часы",
+    marketOpenReal: "Regular · открыт",
+    marketClosedReal: "Regular · закрыт",
+    marketOpenOtc: "OTC · открыт",
+    pairMarketReal: "Рынок Regular",
+    pairMarketOtc: "Рынок OTC",
+    genConnect: "Подключение к серверам",
+    genScan: "Сканирование данных",
+    genAi: "Запрос сигнала у нейросети",
+    genIndicators: "Расчёт индикаторов",
+    genOptimize: "Оптимизация",
+  },
+  en: {
+    brandSub: "Trading Signals",
+    marketStatus: "Market Status",
+    successRate: "Success Rate",
+    selectExpiration: "Select Expiration Time",
+    selectPair: "Select pair",
+    searchPair: "Search pair...",
+    noPairsFound: "No pairs found",
+    getSignal: "Get Signal",
+    directionBuy: "BUY",
+    directionSell: "SELL",
+    signalGenerated: "Signal Generated",
+    expiration: "Expiration",
+    market: "Market:",
+    time: "Time:",
+    generateNew: "Generate New Signal",
+    close: "Close",
+    expSeconds: "Seconds",
+    expMinutes: "Minutes",
+    expHours: "Hours",
+    marketOpenReal: "Regular · open",
+    marketClosedReal: "Regular · closed",
+    marketOpenOtc: "OTC · open",
+    pairMarketReal: "Regular Market",
+    pairMarketOtc: "OTC Market",
+    genConnect: "Connecting to servers",
+    genScan: "Scanning market data",
+    genAi: "Requesting signal from AI",
+    genIndicators: "Calculating indicators",
+    genOptimize: "Optimizing parameters",
+  },
+};
+
+/** Lucide icons — https://lucide.dev */
+function lucideGenIcon(inner) {
+  return `<svg class="gen-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
+}
+
+const GEN_ICONS = {
+  connect: lucideGenIcon(
+    '<rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>'
+  ),
+  scan: lucideGenIcon(
+    '<path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m16 16-1.9-1.9"/>'
+  ),
+  ai: lucideGenIcon(
+    '<path d="M12 18V5"/><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"/><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"/><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"/><path d="M18 18a4 4 0 0 0 2-7.464"/><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"/><path d="M6 18a4 4 0 0 1-2-7.464"/><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"/>'
+  ),
+  indicators: lucideGenIcon(
+    '<path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>'
+  ),
+  optimize: lucideGenIcon(
+    '<path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/>'
+  ),
+};
+
+const GEN_STEPS = [
+  { i18n: "genConnect", icon: "connect", duration: 900, progressEnd: 20 },
+  { i18n: "genScan", icon: "scan", duration: 950, progressEnd: 40 },
+  { i18n: "genAi", icon: "ai", duration: 1100, progressEnd: 60 },
+  { i18n: "genIndicators", icon: "indicators", duration: 950, progressEnd: 80 },
+  { i18n: "genOptimize", icon: "optimize", duration: 1000, progressEnd: 100 },
+];
+
+let signalGenerationRunning = false;
+let lastSignalDirection = "SHORT";
+
+const DIRECTION_ICON = {
+  SHORT: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 17-8.5-8.5-5 5L2 7"/><path d="M16 17h6v-6"/></svg>`,
+  LONG: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg>`,
+};
+
+applyLanguage();
+updateMarketUI();
+updatePairDisplay();
+
+modeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    modeButtons.forEach((btn) => btn.classList.remove("active"));
+    button.classList.add("active");
+    state.mode = button.dataset.mode;
+    syncPairToMode();
+    updateMarketUI();
+    renderPairList(pairSearch?.value || "");
+    sendToTelegram("mode_changed");
+  });
+});
+
+timeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    timeButtons.forEach((btn) => btn.classList.remove("active"));
+    button.classList.add("active");
+    state.expiration = button.dataset.time;
+    sendToTelegram("expiration_changed");
+  });
+});
+
+pairButton.addEventListener("click", openPairModal);
+
+pairSearch?.addEventListener("input", () => {
+  renderPairList(pairSearch.value);
+});
+
+document.querySelectorAll("[data-close-target]").forEach((el) => {
+  el.addEventListener("click", () => {
+    const id = el.dataset.closeTarget;
+    if (id) closeModalById(id);
+  });
+});
+
+signalBtn.addEventListener("click", async () => {
+  if (signalGenerationRunning || isRealMarketClosed()) return;
+  pulse(signalBtn);
+  sendToTelegram("get_signal_clicked");
+  await openSignalModal();
+});
+
+modalGenerate.addEventListener("click", async () => {
+  if (signalGenerationRunning) return;
+  closeModalById("signal-modal");
+  await openSignalModal();
+  sendToTelegram("generate_new_signal");
+});
+
+modalClose.addEventListener("click", () => closeModalById("signal-modal"));
+
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  if (!pairModal.classList.contains("hidden")) closeModalById("pair-modal");
+  else if (!signalModal.classList.contains("hidden")) closeModalById("signal-modal");
+});
+
+langBtn.addEventListener("click", () => {
+  state.lang = state.lang === "ru" ? "en" : "ru";
+  saveLang(state.lang);
+  applyLanguage();
+  renderPairList(pairSearch?.value || "");
+  if (!signalModal.classList.contains("hidden") && modalDirectionText) {
+    modalDirectionText.textContent = directionLabel(lastSignalDirection);
+  }
+  sendToTelegram("language_changed");
+});
+
+function formatPair(symbol) {
+  return state.mode === "otc" ? `${symbol} OTC` : symbol;
+}
+
+function parseSymbol(pair) {
+  return pair.replace(/\s+OTC$/i, "").trim();
+}
+
+function pairLetter(symbol) {
+  return symbol.charAt(0).toUpperCase();
+}
+
+function parseCurrencies(symbol) {
+  const [base, quote] = parseSymbol(symbol).split("/");
+  return { base: base?.trim(), quote: quote?.trim() };
+}
+
+function flagSrc(isoCode) {
+  return `./flags/${isoCode}.svg`;
+}
+
+function pairFlagsHtml(symbol, size = "md") {
+  const { base, quote } = parseCurrencies(symbol);
+  const baseIso = CURRENCY_FLAG[base];
+  const quoteIso = CURRENCY_FLAG[quote];
+
+  if (!baseIso || !quoteIso) {
+    return `<span class="pair-flags pair-flags--${size}"><span class="pair-flag-fallback">${pairLetter(symbol)}</span></span>`;
+  }
+
+  return `<span class="pair-flags pair-flags--${size}">
+      <img class="pair-flag pair-flag--base" src="${flagSrc(baseIso)}" alt="" width="24" height="24" loading="lazy" decoding="async" />
+      <img class="pair-flag pair-flag--quote" src="${flagSrc(quoteIso)}" alt="" width="24" height="24" loading="lazy" decoding="async" />
+    </span>`;
+}
+
+function getPairsForMode() {
+  return PAIR_SYMBOLS.map((symbol) => formatPair(symbol));
+}
+
+function syncPairToMode() {
+  const symbol = parseSymbol(state.pair);
+  const next = formatPair(symbol);
+  if (state.pair !== next) {
+    state.pair = next;
+    updatePairDisplay();
+  }
+}
+
+function updatePairDisplay() {
+  selectedPairEl.textContent = state.pair;
+  if (pairFlagsEl) pairFlagsEl.innerHTML = pairFlagsHtml(parseSymbol(state.pair), "md");
+}
+
+function selectPair(pair) {
+  state.pair = pair;
+  updatePairDisplay();
+  closeModalById("pair-modal");
+  sendToTelegram("pair_changed");
+}
+
+function openPairModal() {
+  if (pairSearch) {
+    pairSearch.value = "";
+    pairSearch.placeholder = (I18N[state.lang] || I18N.en).searchPair;
+  }
+  renderPairList("");
+  openModalById("pair-modal");
+  setTimeout(() => pairSearch?.focus(), 120);
+}
+
+function renderPairList(query) {
+  const dict = I18N[state.lang] || I18N.en;
+  const q = query.trim().toLowerCase();
+  const pairs = getPairsForMode().filter((p) => p.toLowerCase().includes(q));
+  const tag = state.mode === "otc" ? dict.pairMarketOtc : dict.pairMarketReal;
+
+  pairList.innerHTML = "";
+
+  pairs.forEach((pair) => {
+    const symbol = parseSymbol(pair);
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "pair-option" + (pair === state.pair ? " active" : "");
+    btn.setAttribute("role", "option");
+    btn.setAttribute("aria-selected", pair === state.pair ? "true" : "false");
+    btn.innerHTML = `
+      ${pairFlagsHtml(symbol, "sm")}
+      <span class="pair-option-body">
+        <p class="pair-option-name">${pair}</p>
+        <p class="pair-option-tag">${tag}</p>
+      </span>
+      <span class="pair-option-check" aria-hidden="true">✓</span>
+    `;
+    btn.addEventListener("click", () => selectPair(pair));
+    li.appendChild(btn);
+    pairList.appendChild(li);
+  });
+
+  const isEmpty = pairs.length === 0;
+  pairEmpty.classList.toggle("hidden", !isEmpty);
+  pairList.classList.toggle("hidden", isEmpty);
+}
+
+function openModalById(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove("hidden");
+  el.setAttribute("aria-hidden", "false");
+}
+
+function closeModalById(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add("hidden");
+  el.setAttribute("aria-hidden", "true");
+}
+
+/** Blur/dim page content — backdrop-filter fails in Telegram WebView */
+function setSignalGenBackdrop(active) {
+  document.body.classList.toggle("signal-gen-active", active);
+}
+
+function pulse(button) {
+  button.style.transform = "scale(0.98)";
+  setTimeout(() => {
+    button.style.transform = "scale(1)";
+  }, 120);
+}
+
+function applyLanguage() {
+  const dict = I18N[state.lang] || I18N.en;
+  document.documentElement.lang = state.lang;
+  if (langBtn) {
+    const flagImg = langBtn.querySelector(".lang-flag");
+    const iso = LANG_FLAG[state.lang] || "gb";
+    if (flagImg) flagImg.src = `./flags/${iso}.svg`;
+    langBtn.setAttribute(
+      "aria-label",
+      state.lang === "ru" ? "Переключить на английский" : "Switch to Russian"
+    );
+  }
+  i18nEls.forEach((el) => {
+    const key = el.dataset.i18n;
+    if (key && dict[key]) el.textContent = dict[key];
+  });
+  if (pairSearch) pairSearch.placeholder = dict.searchPair;
+  updateMarketUI();
+}
+
+function isWeekend(date = new Date()) {
+  const day = date.getDay();
+  return day === 0 || day === 6;
+}
+
+function isRealMarketClosed() {
+  return state.mode === "real" && isWeekend();
+}
+
+function updateSignalAvailability() {
+  const marketClosed = isRealMarketClosed();
+  const disabled = marketClosed || signalGenerationRunning;
+
+  if (signalBtn) {
+    signalBtn.disabled = disabled;
+    signalBtn.classList.toggle("is-market-closed", marketClosed && !signalGenerationRunning);
+  }
+}
+
+function updateMarketUI() {
+  const dict = I18N[state.lang] || I18N.en;
+  const isOtc = state.mode === "otc";
+  const realClosed = isRealMarketClosed();
+
+  if (marketStatusEl) {
+    if (isOtc) {
+      marketStatusEl.textContent = dict.marketOpenOtc;
+    } else {
+      marketStatusEl.textContent = realClosed ? dict.marketClosedReal : dict.marketOpenReal;
+    }
+    marketStatusEl.classList.toggle("is-closed", !isOtc && realClosed);
+  }
+
+  const marketIcon = document.querySelector(".stats-icon--market");
+  if (marketIcon) {
+    marketIcon.classList.toggle("is-closed", !isOtc && realClosed);
+  }
+
+  if (pairMarketLabel) {
+    pairMarketLabel.textContent = isOtc ? dict.pairMarketOtc : dict.pairMarketReal;
+  }
+
+  updateSignalAvailability();
+}
+
+async function openSignalModal() {
+  if (isRealMarketClosed()) return;
+
+  signalGenerationRunning = true;
+  updateSignalAvailability();
+  if (modalGenerate) modalGenerate.disabled = true;
+
+  try {
+    const signal = await runSignalGeneration();
+    fillSignalModal(signal);
+    openModalById("signal-modal");
+    sendToTelegram("signal_generated");
+  } finally {
+    signalGenerationRunning = false;
+    if (modalGenerate) modalGenerate.disabled = false;
+    updateSignalAvailability();
+  }
+}
+
+function directionLabel(direction) {
+  const dict = I18N[state.lang] || I18N.en;
+  return direction === "LONG" ? dict.directionBuy : dict.directionSell;
+}
+
+function fillSignalModal({ direction, success }) {
+  const dict = I18N[state.lang] || I18N.en;
+  const isBuy = direction === "LONG";
+  lastSignalDirection = direction;
+
+  modalPair.textContent = state.pair;
+  if (modalFlagsEl) modalFlagsEl.innerHTML = pairFlagsHtml(parseSymbol(state.pair), "md");
+
+  if (modalDirectionText) modalDirectionText.textContent = directionLabel(direction);
+  if (modalDirectionIcon) modalDirectionIcon.innerHTML = DIRECTION_ICON[direction] || DIRECTION_ICON.SHORT;
+  if (modalDirection) {
+    modalDirection.classList.toggle("buy", isBuy);
+    modalDirection.classList.toggle("sell", !isBuy);
+  }
+
+  modalSuccess.textContent = success.toFixed(1);
+  modalBar.style.width = `${Math.max(5, Math.min(100, success))}%`;
+
+  modalExpiration.textContent = state.expiration;
+  modalExpSub.textContent = expirationSuffix(state.expiration, dict);
+
+  modalMarket.textContent = state.mode === "otc" ? "OTC" : "REGULAR";
+  modalTime.textContent = new Date().toLocaleTimeString(undefined, { hour12: false });
+}
+
+function setGenProgress(percent) {
+  const value = Math.max(0, Math.min(100, percent));
+  if (genProgressBar) {
+    genProgressBar.style.width = `${value}%`;
+    genProgressBar.classList.toggle("is-active", value > 2);
+  }
+  if (genProgressPct) genProgressPct.textContent = String(Math.round(value));
+}
+
+function updateGenStepDots(activeIndex) {
+  if (!genStepsEl) return;
+  genStepsEl.querySelectorAll(".gen-step-dot").forEach((dot, i) => {
+    dot.classList.toggle("is-active", i === activeIndex);
+    dot.classList.toggle("is-done", i < activeIndex);
+  });
+}
+
+function setGenStep(step, stepIndex) {
+  const dict = I18N[state.lang] || I18N.en;
+  updateGenStepDots(stepIndex);
+
+  if (genStepLabel) {
+    genStepLabel.classList.add("is-swapping");
+    setTimeout(() => {
+      genStepLabel.textContent = dict[step.i18n] || I18N.en[step.i18n];
+      genStepLabel.classList.remove("is-swapping");
+    }, 140);
+  }
+  if (genIcon) {
+    genIcon.classList.add("is-swapping");
+    setTimeout(() => {
+      genIcon.innerHTML = GEN_ICONS[step.icon] || "";
+      genIcon.classList.remove("is-swapping");
+    }, 140);
+  }
+}
+
+function animateGenProgress(from, to, duration) {
+  return new Promise((resolve) => {
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      setGenProgress(from + (to - from) * eased);
+      if (t < 1) requestAnimationFrame(tick);
+      else {
+        setGenProgress(to);
+        resolve();
+      }
+    };
+    requestAnimationFrame(tick);
+  });
+}
+
+async function runSignalGeneration() {
+  setSignalGenBackdrop(true);
+  openModalById("signal-gen-modal");
+  setGenProgress(0);
+
+  try {
+    const dict = I18N[state.lang] || I18N.en;
+    if (genStepLabel) genStepLabel.textContent = dict[GEN_STEPS[0].i18n] || I18N.en[GEN_STEPS[0].i18n];
+    if (genIcon) genIcon.innerHTML = GEN_ICONS[GEN_STEPS[0].icon] || "";
+    updateGenStepDots(0);
+    if (genProgressBar) genProgressBar.classList.remove("is-active");
+
+    let progress = 0;
+
+    for (let i = 0; i < GEN_STEPS.length; i++) {
+      const step = GEN_STEPS[i];
+      setGenStep(step, i);
+      await animateGenProgress(progress, step.progressEnd, step.duration);
+      progress = step.progressEnd;
+    }
+
+    updateGenStepDots(GEN_STEPS.length);
+
+    await new Promise((r) => setTimeout(r, 180));
+    return generateSignal();
+  } finally {
+    closeModalById("signal-gen-modal");
+    setSignalGenBackdrop(false);
+  }
+}
+
+function generateSignal() {
+  const direction = Math.random() < 0.5 ? "SHORT" : "LONG";
+  const success = 74 + Math.random() * 21;
+  return { direction, success };
+}
+
+function expirationSuffix(exp, dict) {
+  if (exp.startsWith("S")) return dict.expSeconds;
+  if (exp.startsWith("M")) return dict.expMinutes;
+  if (exp.startsWith("H")) return dict.expHours;
+  return "";
+}
+
+function sendToTelegram(action) {
+  const payload = { action, ...state };
+  if (tg) {
+    tg.sendData(JSON.stringify(payload));
+    return;
+  }
+  console.log("WebApp payload:", payload);
+}
