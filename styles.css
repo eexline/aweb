@@ -491,10 +491,30 @@ body {
 }
 
 /* —— Pair picker modal —— */
+#pair-modal {
+  --pair-modal-top: 100px;
+  align-items: start;
+  justify-items: center;
+  padding:
+    var(--pair-modal-top)
+    max(var(--space-3), var(--app-inset-right))
+    max(var(--space-4), var(--app-inset-bottom))
+    max(var(--space-3), var(--app-inset-left));
+}
+
+#pair-modal .pair-modal-card {
+  max-height: min(
+    560px,
+    calc(
+      var(--tg-viewport-stable-height, 100dvh) - var(--pair-modal-top) -
+        max(var(--space-4), var(--app-inset-bottom)) - 4px
+    )
+  );
+}
+
 .pair-modal-card {
   display: flex;
   flex-direction: column;
-  max-height: min(560px, calc(100vh - 36px));
   padding: var(--space-3);
   gap: var(--space-2);
   overflow: hidden;
