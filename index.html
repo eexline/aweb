@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Wander Trade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <main class="app">
+    <header class="topbar">
+      <button id="lang-btn" class="lang-btn" type="button" aria-label="Switch to Russian">
+        <img id="lang-flag" class="lang-flag" src="./flags/gb.svg" alt="" decoding="async" />
+      </button>
+      <div class="brand">
+        <p class="brand-title">Wander Trade</p>
+        <p class="brand-sub" data-i18n="brandSub">Trading Signals</p>
+      </div>
+      <img class="logo" src="./logo.png" width="40" height="40" alt="Wander Trade" />
+    </header>
+
+    <div class="stats-row">
+      <section class="card stats-card">
+        <div class="stats-icon stats-icon--market" aria-hidden="true">
+          <!-- Lucide chart-column: https://lucide.dev/icons/chart-column -->
+          <svg class="stats-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+            <path d="M18 17V9" />
+            <path d="M13 17V5" />
+            <path d="M8 17v-3" />
+          </svg>
+        </div>
+        <div class="stats-body">
+          <p class="stats-label" data-i18n="marketStatus">Market Status</p>
+          <p class="stats-value stats-value--status" id="market-status">OTC open</p>
+        </div>
+      </section>
+
+      <section class="card stats-card">
+        <div class="stats-icon stats-icon--rate" aria-hidden="true">
+          <!-- Lucide trending-up: https://lucide.dev/icons/trending-up -->
+          <svg class="stats-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 7h6v6" />
+            <path d="m22 7-8.5 8.5-5-5L2 17" />
+          </svg>
+        </div>
+        <div class="stats-body">
+          <p class="stats-label" data-i18n="successRate">Success Rate</p>
+          <p class="stats-value stats-value--rate"><span id="success-rate">91</span>%</p>
+        </div>
+      </section>
+    </div>
+
+    <section class="mode-switch" aria-label="Market mode">
+      <button class="mode-btn" type="button" data-mode="real">Regular</button>
+      <button class="mode-btn active" type="button" data-mode="otc">OTC</button>
+    </section>
+
+    <section class="card pair-card">
+      <button id="pair-button" class="pair-button" type="button" aria-haspopup="dialog">
+        <div class="pair-left">
+          <div id="pair-flags" class="pair-flags-slot" aria-hidden="true"></div>
+          <div class="pair-text">
+            <p id="selected-pair" class="pair-name">AUD/CHF OTC</p>
+            <p class="pair-sub" id="pair-market-label">OTC Market</p>
+          </div>
+        </div>
+        <span class="pair-chevron" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </section>
+
+    <section class="panel time-block">
+      <p class="section-label" data-i18n="selectExpiration">Select Expiration Time</p>
+      <div class="time-grid" id="time-grid">
+        <button class="time-btn active" type="button" data-time="S3">S3</button>
+        <button class="time-btn" type="button" data-time="S15">S15</button>
+        <button class="time-btn" type="button" data-time="S30">S30</button>
+        <button class="time-btn" type="button" data-time="M1">M1</button>
+        <button class="time-btn" type="button" data-time="M3">M3</button>
+        <button class="time-btn" type="button" data-time="M5">M5</button>
+        <button class="time-btn" type="button" data-time="M30">M30</button>
+        <button class="time-btn" type="button" data-time="H1">H1</button>
+        <button class="time-btn" type="button" data-time="H4">H4</button>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button id="signal-btn" class="action-btn gradient" type="button" data-i18n="getSignal">Get Signal</button>
+    </section>
+  </main>
+
+  <div id="pair-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close-target="pair-modal"></div>
+    <section class="modal-card pair-modal-card" role="dialog" aria-modal="true" aria-label="Select pair">
+      <div class="modal-top">
+        <h2 class="pair-modal-title" data-i18n="selectPair">Select pair</h2>
+        <button class="modal-x" type="button" aria-label="Close" data-close-target="pair-modal">×</button>
+      </div>
+
+      <label class="search-field">
+        <span class="search-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+            <path d="M20 20l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <input id="pair-search" class="search-input" type="search" autocomplete="off" data-i18n-placeholder="searchPair" placeholder="Search pair..." />
+      </label>
+
+      <ul id="pair-list" class="pair-list" role="listbox"></ul>
+      <p id="pair-empty" class="pair-empty hidden" data-i18n="noPairsFound">No pairs found</p>
+    </section>
+  </div>
+
+  <div id="signal-gen-modal" class="gen-overlay hidden" aria-hidden="true" aria-live="polite">
+    <div class="gen-backdrop" aria-hidden="true"></div>
+    <div class="gen-ambient" aria-hidden="true">
+      <span class="gen-blob gen-blob--1"></span>
+      <span class="gen-blob gen-blob--2"></span>
+      <span class="gen-blob gen-blob--3"></span>
+      <div class="gen-bars" aria-hidden="true">
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+        <span class="gen-bar"></span>
+      </div>
+    </div>
+
+    <div class="gen-scene" role="status" aria-label="Generating signal">
+      <div class="gen-orb-wrap" aria-hidden="true">
+        <div class="gen-orbit gen-orbit--outer"></div>
+        <div class="gen-orbit gen-orbit--inner"></div>
+        <div class="gen-orb">
+          <div class="gen-orb-glow"></div>
+          <div class="gen-orb-ring"></div>
+          <div class="gen-orb-core">
+            <div id="gen-icon" class="gen-icon"></div>
+          </div>
+        </div>
+      </div>
+      <p id="gen-step-label" class="gen-step-label">Подключение к серверам</p>
+      <div class="gen-steps" id="gen-steps" aria-hidden="true">
+        <span class="gen-step-dot"></span>
+        <span class="gen-step-dot"></span>
+        <span class="gen-step-dot"></span>
+        <span class="gen-step-dot"></span>
+        <span class="gen-step-dot"></span>
+      </div>
+
+      <div class="gen-progress-area">
+        <div class="gen-progress-head">
+          <span id="gen-progress-pct" class="gen-progress-pct">0</span><span class="gen-progress-suffix">%</span>
+        </div>
+        <div class="gen-progress-shell">
+          <div class="gen-progress-track">
+            <div id="gen-progress-bar" class="gen-progress-bar">
+              <span class="gen-progress-shine" aria-hidden="true"></span>
+              <span class="gen-progress-tip" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="signal-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close-target="signal-modal"></div>
+    <section class="modal-card signal-modal-card" role="dialog" aria-modal="true" aria-label="Signal">
+      <div class="signal-hero">
+        <div id="modal-flags" class="signal-hero__flags" aria-hidden="true"></div>
+        <h2 class="modal-pair" id="modal-pair">AUD/CHF OTC</h2>
+        <div class="signal-pill sell" id="modal-direction">
+          <span class="signal-pill__icon" id="modal-direction-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m22 17-8.5-8.5-5 5L2 7" /><path d="M16 17h6v-6" />
+            </svg>
+          </span>
+          <span id="modal-direction-text">SELL</span>
+        </div>
+      </div>
+
+      <div class="mini-grid">
+        <div class="mini-card mini-card--rate">
+          <div class="mini-head">
+            <span class="mini-icon mini-icon--purple" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" />
+              </svg>
+            </span>
+            <span data-i18n="successRate">Success Rate</span>
+          </div>
+          <div class="mini-value"><span id="modal-success">82.3</span><span class="mini-value-suffix">%</span></div>
+          <div class="mini-bar"><div id="modal-bar" class="mini-bar-fill"></div></div>
+        </div>
+
+        <div class="mini-card mini-card--exp">
+          <div class="mini-head">
+            <span class="mini-icon mini-icon--cyan" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="10" x2="14" y1="2" y2="2" /><line x1="12" x2="15" y1="14" y2="11" /><circle cx="12" cy="14" r="8" />
+              </svg>
+            </span>
+            <span data-i18n="expiration">Expiration</span>
+          </div>
+          <div class="mini-value" id="modal-expiration">S3</div>
+          <div class="mini-sub" id="modal-exp-sub">Seconds</div>
+        </div>
+      </div>
+
+      <div class="meta-card">
+        <div class="meta-row">
+          <span class="meta-key">
+            <svg class="meta-key-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 3v16a2 2 0 0 0 2 2h16" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" />
+            </svg>
+            <span data-i18n="market">Market:</span>
+          </span>
+          <span class="meta-val meta-val--pill" id="modal-market">OTC</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">
+            <svg class="meta-key-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
+            </svg>
+            <span data-i18n="time">Time:</span>
+          </span>
+          <span class="meta-val" id="modal-time">19:01:31</span>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="modal-generate" class="modal-btn gradient" type="button" data-i18n="generateNew">Generate New Signal</button>
+        <button id="modal-close" class="modal-btn secondary" type="button" data-i18n="close">Close</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
