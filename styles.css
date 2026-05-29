@@ -41,10 +41,17 @@
   --tg-safe-bottom: 0px;
   --tg-safe-left: 0px;
   --tg-safe-right: 0px;
-  --app-inset-top: calc(env(safe-area-inset-top, 0px) + var(--tg-safe-top));
-  --app-inset-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--tg-safe-bottom));
-  --app-inset-left: calc(env(safe-area-inset-left, 0px) + var(--tg-safe-left));
-  --app-inset-right: calc(env(safe-area-inset-right, 0px) + var(--tg-safe-right));
+  --app-inset-top: env(safe-area-inset-top, 0px);
+  --app-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --app-inset-left: env(safe-area-inset-left, 0px);
+  --app-inset-right: env(safe-area-inset-right, 0px);
+}
+
+body.tg-app {
+  --app-inset-top: var(--tg-safe-top);
+  --app-inset-bottom: var(--tg-safe-bottom);
+  --app-inset-left: var(--tg-safe-left);
+  --app-inset-right: var(--tg-safe-right);
 }
 
 *,
